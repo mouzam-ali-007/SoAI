@@ -86,7 +86,7 @@ function createWindow() {
     icon: largeIconPath,
     webPreferences: {
       nodeIntegration: true,
-      webSecurity: false,
+      webSecurity: true,
     },
   });
   // mainWindow.setContentProtection(true);
@@ -109,7 +109,11 @@ function createWindow() {
   // });
 
   // mainWindow.setContentProtection(true)
-  mainWindow.loadURL(path.join("http://localhost:3000/") + "?main");
+  // mainWindow.loadURL(path.join("http://localhost:3000/") + "?main");
+  mainWindow.loadURL(
+    isDev ? "http://localhost:3000" : `file://${__dirname}/../build/index.html`
+    //  `file://${path.join(__dirname, "../build/index.html")}`
+  );
   //   loadURL(
   //   isDev
   //     ? 'http://localhost:3000'
